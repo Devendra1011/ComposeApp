@@ -24,6 +24,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -70,7 +71,8 @@ class MainActivity : ComponentActivity() {
                                 name = text
 
                             },
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier
+                                .weight(1f)
                                 .width(300.dp),
                         )
                         Spacer(modifier = Modifier.width(16.dp))
@@ -80,6 +82,7 @@ class MainActivity : ComponentActivity() {
 
                             if (name.isNotBlank()) {
                                 names = names + name
+                                name = ""
                             }
                         }) {
 
@@ -89,9 +92,15 @@ class MainActivity : ComponentActivity() {
 
                     LazyColumn() {
                         items(names) { currentName ->
-                            Text(text = currentName)
-                        }
+                            Text(text = currentName,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(16.dp)
 
+                            )
+                            HorizontalDivider()
+
+                        }
                     }
                 }
             }
